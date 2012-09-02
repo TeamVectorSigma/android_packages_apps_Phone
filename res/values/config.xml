@@ -64,6 +64,8 @@
     <!-- Flag indicating if the tty is enabled -->
     <bool name="tty_enabled">false</bool>
 
+    <bool name="sprint_mwi_quirk">true</bool>
+
     <!-- Flag indicating if ring delay is enabled -->
     <bool name="ringdelay_enabled">true</bool>
 
