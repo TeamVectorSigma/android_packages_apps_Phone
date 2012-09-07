@@ -255,6 +255,9 @@ public class PhoneUtils {
         boolean answered = false;
         BluetoothHandsfree bluetoothHandsfree = null;
 
+        // enable noise suppression
+        turnOnNoiseSuppression(app.getApplicationContext(), true);
+
         if (phoneIsCdma) {
             // Stop any signalInfo tone being played when a Call waiting gets answered
             if (ringing.getState() == Call.State.WAITING) {
