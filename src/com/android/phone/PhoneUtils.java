@@ -255,9 +255,6 @@ public class PhoneUtils {
         boolean answered = false;
         BluetoothHandsfree bluetoothHandsfree = null;
 
-        // enable noise suppression
-        turnOnNoiseSuppression(app.getApplicationContext(), true);
-
         if (phoneIsCdma) {
             // Stop any signalInfo tone being played when a Call waiting gets answered
             if (ringing.getState() == Call.State.WAITING) {
@@ -381,52 +378,52 @@ public class PhoneUtils {
     }
 
     static Call getCurrentCall(Phone phone) {
-		Call ringing = phone.getRingingCall();
-		Call fg = phone.getForegroundCall();
-		Call bg = phone.getBackgroundCall();
-		if (!ringing.isIdle()) {
-			return ringing;
-		}
-		if (!fg.isIdle()) {
-			return fg;
-		}
-		if (!bg.isIdle()) {
-			return bg;
-		}
-		return fg;
-	}
+        Call ringing = phone.getRingingCall();
+        Call fg = phone.getForegroundCall();
+        Call bg = phone.getBackgroundCall();
+        if (!ringing.isIdle()) {
+                return ringing;
+                }
+        if (!fg.isIdle()) {
+                return fg;
+                }
+        if (!bg.isIdle()) {
+                return bg;
+                }
+        return fg;
+    }
 
-	static Connection getConnection(Phone phone, Call call) {
-		if (call == null) {
-			return null;
-		}
+    static Connection getConnection(Phone phone, Call call) {
+        if (call == null) {
+            return null;
+            }
 
-		if (phone.getPhoneType() == Phone.PHONE_TYPE_CDMA) {
-			return call.getLatestConnection();
-		}
+        if (phone.getPhoneType() == Phone.PHONE_TYPE_CDMA) {
+            return call.getLatestConnection();
+        }
 
-		return call.getEarliestConnection();
-	}
+        return call.getEarliestConnection();
+    }
 
-	static class PhoneSettings {
-		static boolean vibOn45Secs(Context context) {
-			return PreferenceManager.getDefaultSharedPreferences(context)
-					.getBoolean("button_vibrate_45", false);
-		}
-		static boolean vibHangup(Context context) {
-			return PreferenceManager.getDefaultSharedPreferences(context)
-					.getBoolean("button_vibrate_hangup", false);
-		}
-		static boolean vibOutgoing(Context context) {
-			return PreferenceManager.getDefaultSharedPreferences(context)
-					.getBoolean("button_vibrate_outgoing", false);
-		}
+    static class PhoneSettings {
+        static boolean vibOn45Secs(Context context) {
+            return PreferenceManager.getDefaultSharedPreferences(context)
+                    .getBoolean("button_vibrate_45", false);
+        }
+        static boolean vibHangup(Context context) {
+            return PreferenceManager.getDefaultSharedPreferences(context)
+                    .getBoolean("button_vibrate_hangup", false);
+        }
+        static boolean vibOutgoing(Context context) {
+            return PreferenceManager.getDefaultSharedPreferences(context)
+                    .getBoolean("button_vibrate_outgoing", false);
+        }
 
-		static boolean vibCallWaiting(Context context) {
-			return PreferenceManager.getDefaultSharedPreferences(context)
-					.getBoolean("button_vibrate_call_waiting", false);
-		}
-	};
+        static boolean vibCallWaiting(Context context) {
+            return PreferenceManager.getDefaultSharedPreferences(context)
+                    .getBoolean("button_vibrate_call_waiting", false);
+        }
+    };
 
     static boolean hangupRingingCall(Call ringing) {
         if (DBG) log("hangup ringing call");
@@ -2057,19 +2054,17 @@ public class PhoneUtils {
      */
     private static void setMuteInternal(Phone phone, boolean muted) {
         final PhoneApp app = PhoneApp.getInstance();
-        if (phone != null) {
-            Context context = phone.getContext();
-            boolean routeToAudioManager =
-                context.getResources().getBoolean(R.bool.send_mic_mute_to_AudioManager);
-            if (routeToAudioManager) {
-                AudioManager audioManager =
-                    (AudioManager) phone.getContext().getSystemService(Context.AUDIO_SERVICE);
-                if (DBG) log("setMuteInternal: using setMicrophoneMute(" + muted + ")...");
-                audioManager.setMicrophoneMute(muted);
-            } else {
-                if (DBG) log("setMuteInternal: using phone.setMute(" + muted + ")...");
-                phone.setMute(muted);
-            }
+        Context context = phone.getContext();
+        boolean routeToAudioManager =
+            context.getResources().getBoolean(R.bool.send_mic_mute_to_AudioManager);
+        if (routeToAudioManager) {
+            AudioManager audioManager =
+                (AudioManager) phone.getContext().getSystemService(Context.AUDIO_SERVICE);
+            if (DBG) log("setMuteInternal: using setMicrophoneMute(" + muted + ")...");
+            audioManager.setMicrophoneMute(muted);
+        } else {
+            if (DBG) log("setMuteInternal: using phone.setMute(" + muted + ")...");
+            phone.setMute(muted);
         }
         app.notificationMgr.updateMuteNotification();
     }
