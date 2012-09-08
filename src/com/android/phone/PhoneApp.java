@@ -280,13 +280,13 @@ public class PhoneApp extends Application implements AccelerometerListener.Orien
     // Current TTY operating mode selected by user
     private int mPreferredTtyMode = Phone.TTY_MODE_OFF;
 
-	// handling of vibration on call begin/each minute/call end
-	private static final String ACTION_VIBRATE_45 = "com.android.phone.PhoneApp.ACTION_VIBRATE_45";
-	private PendingIntent mVibrateIntent;
-	private Vibrator mVibrator;
-	private AlarmManager mAM;
-	private HandlerThread mVibrationThread;
-	private Handler mVibrationHandler;
+    // handling of vibration on call begin/each minute/call end
+    private static final String ACTION_VIBRATE_45 = "com.android.phone.PhoneApp.ACTION_VIBRATE_45";
+    private PendingIntent mVibrateIntent;
+    private Vibrator mVibrator;
+    private AlarmManager mAM;
+    private HandlerThread mVibrationThread;
+    private Handler mVibrationHandler;
 
     /**
      * Set the restore mute state flag. Used when we are setting the mute state
