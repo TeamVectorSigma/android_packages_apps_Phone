@@ -28,8 +28,6 @@ import com.android.internal.telephony.cdma.CdmaCallWaitingNotification;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaDisplayInfoRec;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfoRec;
 import com.android.internal.telephony.cdma.SignalToneUtil;
-import com.android.internal.telephony.CallManager;
-import com.android.phone.CallFeaturesSetting;
 
 import android.app.ActivityManagerNative;
 import android.content.Context;
@@ -762,20 +760,18 @@ public class CallNotifier extends Handler
                 .enableNotificationAlerts(state == Phone.State.IDLE);
 
         Phone fgPhone = mCM.getFgPhone();
-        if (fgPhone != null) {
-            if (fgPhone.getPhoneType() == Phone.PHONE_TYPE_CDMA) {
-                if ((fgPhone.getForegroundCall().getState() == Call.State.ACTIVE)
-                        && ((mPreviousCdmaCallState == Call.State.DIALING)
-                        ||  (mPreviousCdmaCallState == Call.State.ALERTING))) {
-                    if (mIsCdmaRedialCall) {
-                        int toneToPlay = InCallTonePlayer.TONE_REDIAL;
-                        new InCallTonePlayer(toneToPlay).start();
-                    }
-                    // Stop any signal info tone when call moves to ACTIVE state
-                stopSignalInfoTone();
+        if (fgPhone.getPhoneType() == Phone.PHONE_TYPE_CDMA) {
+            if ((fgPhone.getForegroundCall().getState() == Call.State.ACTIVE)
+                    && ((mPreviousCdmaCallState == Call.State.DIALING)
+                    ||  (mPreviousCdmaCallState == Call.State.ALERTING))) {
+                if (mIsCdmaRedialCall) {
+                    int toneToPlay = InCallTonePlayer.TONE_REDIAL;
+                    new InCallTonePlayer(toneToPlay).start();
                 }
-                mPreviousCdmaCallState = fgPhone.getForegroundCall().getState();
+                // Stop any signal info tone when call moves to ACTIVE state
+                stopSignalInfoTone();
             }
+            mPreviousCdmaCallState = fgPhone.getForegroundCall().getState();
         }
 
         // Have the PhoneApp recompute its mShowBluetoothIndication
@@ -859,16 +855,15 @@ public class CallNotifier extends Handler
                                     IN_CALL_NOTIFICATION_UPDATE_DELAY);
         }
 
-        if (fgPhone != null) {
-            if (fgPhone.getPhoneType() == Phone.PHONE_TYPE_CDMA) {
-                Connection c = fgPhone.getForegroundCall().getLatestConnection();
-                if ((c != null) && (PhoneNumberUtils.isLocalEmergencyNumber(c.getAddress(),
+        if (fgPhone.getPhoneType() == Phone.PHONE_TYPE_CDMA) {
+            Connection c = fgPhone.getForegroundCall().getLatestConnection();
+            if ((c != null) && (PhoneNumberUtils.isLocalEmergencyNumber(c.getAddress(),
                                                                         mApplication))) {
-                    if (VDBG) log("onPhoneStateChanged: it is an emergency call.");
-                    Call.State callState = fgPhone.getForegroundCall().getState();
-                    if (mEmergencyTonePlayerVibrator == null) {
-                        mEmergencyTonePlayerVibrator = new EmergencyTonePlayerVibrator();
-                    }
+                if (VDBG) log("onPhoneStateChanged: it is an emergency call.");
+                Call.State callState = fgPhone.getForegroundCall().getState();
+                if (mEmergencyTonePlayerVibrator == null) {
+                    mEmergencyTonePlayerVibrator = new EmergencyTonePlayerVibrator();
+                }
 
                 if (callState == Call.State.DIALING || callState == Call.State.ALERTING) {
                     mIsEmergencyToneOn = Settings.System.getInt(
@@ -1169,9 +1164,6 @@ public class CallNotifier extends Handler
             }
         }
 
-        // disable noise suppression
-        PhoneUtils.turnOnNoiseSuppression(mApplication.getApplicationContext(), false);
-
         // If we don't need to play BUSY or CONGESTION, then play the
         // "call ended" tone if this was a "regular disconnect" (i.e. a
         // normal call where one end or the other hung up) *and* this
@@ -1355,15 +1347,6 @@ public class CallNotifier extends Handler
             // *should* be blocked at the telephony layer on non-voice-capable
             // capable devices.)
             Log.w(LOG_TAG, "Got onMwiChanged() on non-voice-capable device! Ignoring...");
-            return;
-        }
-
-        boolean notifProp = mApplication.getResources().getBoolean(R.bool.sprint_mwi_quirk);
-        boolean notifOption = Settings.System.getInt(mApplication.getPhone().getContext().getContentResolver(), Settings.System.ENABLE_MWI_NOTIFICATION, 0) == 1;
-        if (notifProp && !notifOption) {
-            // sprint_mwi_quirk is true, and ENABLE_MWI_NOTIFICATION is unchecked or unset (false)
-            // ignore the mwi event, but log if we're debugging.
-            if (VDBG) log("onMwiChanged(): mwi_notification is disabled. Ignoring...");
             return;
         }
 
