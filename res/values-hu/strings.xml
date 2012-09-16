@@ -77,6 +77,8 @@
     <string name="apn_settings" msgid="9043423184895642077">"Hozzáférési pontok nevei"</string>
     <string name="settings_label" msgid="3876743539816984008">"Hálózati beállítások"</string>
     <string name="voicemail" msgid="8693759337917898954">"Hangposta"</string>
+    <string name="mwi_notification_title">Várakozó üzenet</string>
+    <string name="mwi_notification_summary">Várakozó hangposta üzenet megjelenítése</string>
     <string name="voicemail_abbreviated" msgid="2215592488517217448">"HP:"</string>
     <string name="networks" msgid="8873030692174541976">"Mobilszolgáltatók"</string>
     <string name="call_settings" msgid="6112441768261754562">"Hívásbeállítások"</string>
@@ -168,6 +170,13 @@
     <string name="preferred_network_mode_cdma_only_summary" msgid="1309770926198634150">"Preferált hálózati mód: csak CDMA"</string>
     <string name="preferred_network_mode_evdo_only_summary" msgid="8472220691721269155">"Preferált hálózati mód: csak EvDo"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="3722647806454528426">"Preferált hálózati mód: LTE/CDMA"</string>
+    <!-- Mobile network settings, summary for preferred network mode LTE / GSM[CHAR LIMIT=100] -->
+    <string name="preferred_network_mode_lte_gsm_summary">"Preferált hálózati mód: LTE / WCDMA / GSM"</string>
+    <!-- Mobile network settings, summary for preferred network mode LTE / CDMA / EvDo[CHAR LIMIT=100] -->
+    <string name="preferred_network_mode_lte_cdma_evdo_summary">"Preferált hálózati mód:  LTE / CDMA / EvDo"</string>
+    <!-- Mobile network settings, summary for preferred network mode LTE / CMDA / EvDo / GSM/WCDMACHAR LIMIT=100] -->
+    <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary">"Preferált hálózati mód: LTE / CMDA / EvDo / GSM/WCDMA"</string>
+
   <string-array name="preferred_network_mode_choices">
     <item msgid="5543794538185064048">"LTE/CDMA"</item>
     <item msgid="3273348576277144124">"Csak EvDo"</item>
@@ -187,6 +196,12 @@
     <string name="roaming" msgid="8871412572928323707">"Adatbarangolás"</string>
     <string name="roaming_enable" msgid="7331106985174381987">"Csatlakozás adatszolgáltatásokhoz barangolás során"</string>
     <string name="roaming_disable" msgid="1843417228755568110">"Csatlakozás adatszolgáltatásokhoz barangolás során"</string>
+    <!-- Mobile network settings screen, setting check box name -->
+    <string name="national_roaming">Nemzeti adatbarangolás</string>
+    <!-- Mobile network settings screen, setting summary text when check box is selected -->
+    <string name="national_roaming_enable">Csatlakozzon adatszolgáltatásokhoz nemzeti barangolás során</string>
+    <!-- Mobile network settings screen, setting summary text when check box is clear -->
+    <string name="national_roaming_disable">Ne csatlakozzon adatszolgáltatásokhoz nemzeti barangolássorán</string>
     <string name="roaming_reenable_message" msgid="8913735676127858115">"Megszakadt az adatkapcsolat, mert elhagyta az otthoni hálózatot, és az adatbarangolás nincs bekapcsolva."</string>
     <string name="roaming_warning" msgid="7820963598559553967">"Engedélyezi az adatbarangolást? Lehet, hogy jelentős összeget számítanak fel érte!"</string>
     <string name="gsm_umts_options" msgid="6538311689850981686">"GSM/UMTS beállítások"</string>
@@ -503,6 +518,11 @@
     <string name="voicemail_settings" msgid="72448049107749316">"Beállítás"</string>
     <string name="voicemail_number_not_set" msgid="6724904736891087856">"&lt;Nincs megadva&gt;"</string>
     <string name="other_settings" msgid="3672912580359716394">"Egyéb hívásbeállítások"</string>
+
+    <!-- Dialer UI Settings -->
+    <string name="dialer_ui_settings_title">Tárcsázó beállítások</string>
+    <string name="dialer_ui_settings_summary">Tárcsázó beállításai</string>
+
     <string name="calling_via_template" msgid="4839419581866928142">"Hívás a(z) <xliff:g id="PROVIDER_NAME">%s</xliff:g> szolgáltatón keresztül"</string>
     <string name="contactPhoto" msgid="4713193418046639466">"ismerős fotója"</string>
     <string name="goPrivate" msgid="865837794424530980">"magánbeszélgetés"</string>
