@@ -632,4 +632,12 @@
     <string name="vibrate_hangup_sum">Çağrı sonlandığında titret</string>
     <string name="vibrate_call_waiting">Çağrı bekletilirse titret</string>
     <string name="vibrate_call_waiting_sum">Çağrı bekletildiğinde titret</string>
+
+    <!-- Extra Feature Strings -->
+    <string-array name="ring_delay_entries">
+        <item>Zil sesi gecikmesi kapalı</item>
+        <item>3 Saniye</item>
+        <item>6 Saniye</item>
+        <item>9 Saniye</item>
+    </string-array>
 </resources>

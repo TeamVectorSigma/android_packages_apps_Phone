@@ -545,6 +545,7 @@
     <string name="dtmf_tone_enable_title" msgid="827601042915852989">"DTMF-tonen kiestoetsen"</string>
     <string name="preference_category_ringtone" msgid="9007490591910078324">"Beltoon"</string>
 
+    <!-- CYANOGENMOD EDITS -->
     <string name="perm_change_mobile_network">Van netwerk veranderen (2G/3G)</string>
     <string name="perm_change_mobile_network_desc">Hiermee kunnen apps op elk moment wisselen tussen 2G en 3G. 3G is sneller, maar verbruikt meer stroom en kan duurder zijn.</string>
 
