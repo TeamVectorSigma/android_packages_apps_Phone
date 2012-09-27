@@ -328,8 +328,18 @@
     <string name="voice_privacy_summary" msgid="3159383389833516214">"향상된 개인정보 보호 모드 사용"</string>
     <string name="tty_mode_option_title" msgid="9033098925144434669">"TTY 모드"</string>
     <string name="tty_mode_option_summary" msgid="1073835131534808732">"TTY 모드 설정"</string>
+    <string name="ring_delay_title">전화 딜레이</string>
+    <string name="ring_delay_summary">딜레이 초 설정하기</string>
+  <string-array name="ring_delay_entries">
+      <item>딜레이 없음</item>
+      <item>3 초</item>
+      <item>6 초</item>
+      <item>9 초</item>
+  </string-array>
     <string name="auto_retry_mode_title" msgid="4073265511427813322">"자동으로 다시 시도"</string>
     <string name="auto_retry_mode_summary" msgid="4973886004067532288">"자동 다시 시도 모드 사용"</string>
+    <string name="exit_to_home_screen_title">전화 종료시 홈으로 가기</string>
+    <string name="exit_to_home_screen_summary">통화 기록으로 가는것 보다 홈으로 갑니다</string>
     <string name="menu_add" msgid="1882023737425114762">"연락처 추가"</string>
     <string name="menu_edit" msgid="7143003705504672374">"연락처 수정"</string>
     <string name="menu_delete" msgid="3977150783449642851">"연락처 삭제"</string>
