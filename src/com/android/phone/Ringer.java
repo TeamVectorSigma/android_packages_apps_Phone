@@ -150,15 +150,6 @@ public class Ringer {
             return (mVibratorThread != null);
         }
     }
- 
-    /**
-     * @return true if ring() has been called at least once since the last call to stopRing()
-     */
-    boolean hasRang() {
-        synchronized (this) {
-            return (mFirstRingEventTime >= 0);
-        }
-    }
 
     /**
      * Starts the ringtone and/or vibrator

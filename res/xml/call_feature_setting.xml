@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2008 The Android Open Source Project
+     Advanced Settings (C) 2012 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -40,6 +41,11 @@
         android:key="pref_advanced_settings"
         android:title="@string/advanced_setting">
 
+        <CheckBoxPreference
+            android:key="keep_proximity_sensor_on"
+            android:title="@string/keep_proximity_sensor_on"
+            android:persistent="true"
+            android:summary="@string/keep_proximity_sensor_on_sum"/>
         <CheckBoxPreference
             android:key="button_vibrate_outgoing"
             android:title="@string/vibrate_outgoing"
